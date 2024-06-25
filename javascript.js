@@ -4,4 +4,9 @@ function getComputerChoice() {
     return randomChoice;
 }
 
-getComputerChoice();
+function getHumanChoice() {
+    const humanChoice = prompt("Enter your throw: Rock, paper, or scissors");
+    console.log(`Human chose ${humanChoice}`);
+    return humanChoice;
+}
+
