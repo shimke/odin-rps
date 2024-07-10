@@ -1,4 +1,7 @@
 //declare integer consts for each choice
+const ROCK = 0;
+const PAPER = 1;
+const SCISSORS = 2;
 
 function getComputerChoice() {
     const randomChoice = Math.floor(Math.random() * 3);
@@ -12,13 +15,13 @@ function getHumanChoice() {
     let humanChoice;
     switch(humanInput) {
         case "rock":
-            humanChoice = 0;
+            humanChoice = ROCK;
             break
         case "paper":
-            humanChoice = 1;
+            humanChoice = PAPER;
             break;
         case "scissors":
-            humanChoice = 2;
+            humanChoice = SCISSORS;
             break
         default:
             console.log("Sorry, that's not a valid choice!");
