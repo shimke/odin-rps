@@ -3,6 +3,10 @@ const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
 
+//declare score variables
+let computerScore = 0;
+let humanScore = 0;
+
 function getComputerChoice() {
     const randomChoice = Math.floor(Math.random() * 3);
     console.log(`Computer chose ${randomChoice}`);
