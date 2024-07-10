@@ -10,7 +10,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    const humanInput = prompt("Enter your throw: rock, paper, or scissors");
+    const humanInput = prompt("Enter your throw: rock, paper, or scissors").toLowerCase();
     console.log(`Human chose ${humanInput}`);
     let humanChoice;
     switch(humanInput) {
