@@ -1,8 +1,11 @@
-//declare integer consts for each choice
+//declare lookup table mapping throws to integers
 const throwLookup = {
     'rock': 0,
     'paper': 1,
-    'scissors': 2
+    'scissors': 2,
+    0: 'rock',
+    1: 'paper',
+    2: 'scissors'
 }
 
 //declare score variables
@@ -10,32 +13,45 @@ let computerScore = 0;
 let humanScore = 0;
 
 function getComputerChoice() {
-    const randomChoice = Math.floor(Math.random() * 3);
+    const randomChoice = throwLookup[Math.floor(Math.random() * 3)];
     console.log(`Computer chose ${randomChoice}`);
     return randomChoice;
 }
 
 function getHumanChoice() {
-    const humanInput = prompt("Enter your throw: rock, paper, or scissors").toLowerCase();
-    console.log(`Human chose ${humanInput}`);
-    let humanChoice;
-    switch(humanInput) {
+    const humanChoice = prompt("Enter your throw: rock, paper, or scissors").toLowerCase();
+    
+    switch(humanChoice) {
         case "rock":
-            humanChoice = throwLookup.rock;
-            break
         case "paper":
-            humanChoice = throwLookup.paper;
-            break;
         case "scissors":
-            humanChoice = throwLookup.scissors;
-            break
+            console.log(`Human chose ${humanChoice}`);
+            return humanChoice;
+            break;
         default:
-            console.log("Sorry, that's not a valid choice!");
-    }
+            console.log("Sorry, that's not a valid choice! Please try again.");
 
-    return humanChoice;
+            //This recursion is ok because it's just a demo browser game and moreover is limited by human input. 
+            return getHumanChoice();
+    }
 }
 
 function playRound() {
-    
+    let compThrow = throwLookup[getComputerChoice()];
+    let userThrow = throwLookup[getHumanChoice()];
+
+    //calculates outcome - Adding 3 to difference ensures remainder is positive
+    let outcome = ((userThrow - compThrow) + 3) % 3
+
+    //Map outcome to score - Outcome of 0 is tie, 1 is human win, 2 is human loss
+    switch (outcome) {
+        case 1:
+            humanScore++;
+            console.log('You win!')
+            break;
+        case 2:
+            computerScore++;
+            break;
+    }
+
 }
