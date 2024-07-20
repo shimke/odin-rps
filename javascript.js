@@ -1,7 +1,9 @@
 //declare integer consts for each choice
-const ROCK = 0;
-const PAPER = 1;
-const SCISSORS = 2;
+const throwLookup = {
+    'rock': 0,
+    'paper': 1,
+    'scissors': 2
+}
 
 //declare score variables
 let computerScore = 0;
@@ -19,13 +21,13 @@ function getHumanChoice() {
     let humanChoice;
     switch(humanInput) {
         case "rock":
-            humanChoice = ROCK;
+            humanChoice = throwLookup.rock;
             break
         case "paper":
-            humanChoice = PAPER;
+            humanChoice = throwLookup.paper;
             break;
         case "scissors":
-            humanChoice = SCISSORS;
+            humanChoice = throwLookup.scissors;
             break
         default:
             console.log("Sorry, that's not a valid choice!");
@@ -34,3 +36,6 @@ function getHumanChoice() {
     return humanChoice;
 }
 
+function playRound() {
+    
+}
