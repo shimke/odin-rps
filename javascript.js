@@ -36,9 +36,9 @@ function getHumanChoice() {
     }
 }
 
-function playRound() {
-    let compThrow = throwLookup[getComputerChoice()];
-    let userThrow = throwLookup[getHumanChoice()];
+function playRound(compChoice,humanChoice) {
+    let compThrow = throwLookup[compChoice];
+    let userThrow = throwLookup[humanChoice];
 
     //calculates outcome - Adding 3 to difference ensures remainder is positive
     let outcome = ((userThrow - compThrow) + 3) % 3
@@ -47,10 +47,11 @@ function playRound() {
     switch (outcome) {
         case 1:
             humanScore++;
-            console.log('You win!')
+            console.log(`You win! You threw ${humanChoice} which beats ${compChoice}!`);
             break;
         case 2:
             computerScore++;
+            console.log(`You lose! You threw ${humanChoice} which loses to ${compChoice}!`);
             break;
     }
 
